@@ -1,4 +1,3 @@
-import Helpers from "./Helpers.js";
 import Serie from "./Classes/Serie.js";
 import Film from "./Classes/Film.js";
 
@@ -25,7 +24,7 @@ numeral.register("locale", "fr", {
 // switch between locales
 numeral.locale("fr");
 
-export const apiKey = "97719463bea4bd4b5902c1a735c0556a";
+export const apiKey = "0ade470e767df27c679a9c551204ac62";
 
 const traiterMedia = (data, type) => {
   const media = type == "movie" ? new Film(data) : new Serie(data);
