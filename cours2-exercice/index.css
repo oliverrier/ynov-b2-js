@@ -47,8 +47,7 @@ body {
 }
 
 #poster {
-  width: 100px;
-  height: 150px;
+  width: 154px;
   margin: 0 32px;
 }
 
@@ -60,6 +59,10 @@ body {
 
 .infos div {
   margin: 8px 0;
+}
+
+.infos div.communes{
+  margin-right: 32px;
 }
 
 .communes,
