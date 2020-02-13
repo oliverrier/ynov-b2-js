@@ -14,6 +14,7 @@ body {
   position: relative;
   background: url(https://betravingknows.com/wp-content/uploads/2017/06/video-movie-placeholder-image-grey.png)
     center center;
+  background-size: cover;
 }
 
 .media-infos {
