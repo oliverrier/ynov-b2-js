@@ -1,3 +1,4 @@
+import Helpers from "./Helpers.js";
 import Serie from "./Classes/Serie.js";
 import Film from "./Classes/Film.js";
 
@@ -24,7 +25,7 @@ numeral.register("locale", "fr", {
 // switch between locales
 numeral.locale("fr");
 
-export const apiKey = "0ade470e767df27c679a9c551204ac62";
+export const apiKey = "97719463bea4bd4b5902c1a735c0556a";
 
 const traiterMedia = (data, type) => {
   const media = type == "movie" ? new Film(data) : new Serie(data);
@@ -38,6 +39,17 @@ const traiterImages = images => {
     img.src = Helpers.imageUrl(image.file_path);
     divImages.appendChild(img);
   });
+};
+
+const traiterSimilaires = (similaires, type) => {
+  for (let i = 0; i < similaires.length; i++) {
+    const element = similaires[i];
+    const lien = document.createElement("a");
+    lien.style.display = "block";
+    lien.innerText = type === "movie" ? element.name : element.title;
+    lien.href = "#${type}/${element.id}";
+    Helpers.id("similaires").appendChild(lien);
+  }
 };
 
 const chargerMedia = (type, id) => {
@@ -58,6 +70,11 @@ const chargerMedia = (type, id) => {
     .get(imagesUrl)
     .then(response => traiterImages(response.data.backdrops))
     .catch(error => console.error(error));
+
+  const similarUrl = `https://api.themoviedb.org/3/${type}/${id}/similar?api-key=${apiKey}&language=fr-FR`;
+  axios
+    .get(similarUrl)
+    .then(response => traiterSimilaires(response.data.results));
 };
 
 export default chargerMedia;
