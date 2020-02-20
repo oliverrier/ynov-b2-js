@@ -23,11 +23,13 @@ export default class Media {
   }
 
   cacherPanneau(id) {
-    const panneaux = document.getElementsByClassName("panneau");
+    const panneeaux = document.getElementsByClassName(".panneau");
     for (let i = 0; i < panneaux.length; i++) {
-      const panneau = panneaux[i];
-      panneau.style.display = panneau.id === id ? "none" : "";
+      const panneau = array[i];
+      
+      
     }
+    Helpers.id(id).style.display = "none";
   }
 
   remplirAnnee(date) {
